@@ -3,29 +3,39 @@ $(document).ready(function() {
 	var time;
 	var select;
 	var columns;
-	var hitNumberArr = []; // 当たりの数字を格納
-	var aleadyNumArr = []; // 既出の数字を格納
+
+	// 当たりの数字を格納。Arr[0]が十の位、Arr[1]が1の位
+	var hitNumberArr = [];
+	// 既出の数字を格納
+	var aleadyNumArr = [];
 
 	onload(true);
 
+	$("#btn_start").on("click", function(){
+		go();
+	})
+
+	// 受け取った数字を桁ごとの配列に変換して保存
 	function setHitNumberArr(num){
-		hitNumberArr.push(Math.floor(num / 10));
-		hitNumberArr.push(num % 10);
+		hitNumberArr.push(Math.floor(num / 10)); // 十の位
+		hitNumberArr.push(num % 10); // 一の位
 	}
 
 	function makeRandomNum(){
 		return Math.round(Math.random()*100 % 75);
 	}
 
+	//既出の数字を表示
 	function displayAlreadyNum(num){
 		aleadyNumArr.push(num);
 		$('#js-already-num-block').after("<div class='already_num'>"+num+"</div>");
 	}
 
 	function onload(init) {
+		// 当たりの決定
 		do {
 			var num = makeRandomNum();
-		} while ($.inArray(num, aleadyNumArr) !== -1);
+		} while (($.inArray(num, aleadyNumArr) !== -1) && num > 0 && num <=75);
 		setHitNumberArr(num);
 
 		columns=0;
@@ -34,19 +44,17 @@ $(document).ready(function() {
 	}
 
 	function go() {
-		// initialize after pushed Start button.
 		time = parseInt($("#txt_duration").val()) * 1000; // 数値のみの取得
 		select = $('#sel_easing').val();
 		$("#btn_start").attr("disabled", "disabled");
-	
+
 		moveSlots($("#slots_a .wrapper"));
 		moveSlots($("#slots_b .wrapper"));
-	
-		// refee.
+
 		$(this).delay(time + 1000).queue(function() {
-			$("#btn_reset").removeAttr("disabled");
 			$(this).dequeue();
-			displayAlreadyNum(hitNumberArr[0]*10+hitNumberArr[1]);
+			// 当たりの数字は配列に格納されているので、
+			displayAlreadyNum(hitNumberArr[0] * 10 + hitNumberArr[1]);
 			reset();
 		})
 	}
@@ -66,7 +74,7 @@ $(document).ready(function() {
 
 		$("#btn_start").removeAttr("disabled");
 		$("#btn_reset").attr("disabled", "disabled");
-		hitNumberArr=[];
+		hitNumberArr = []; // 当たりの数字の初期化
 		onload(false);
 	}
 
@@ -97,8 +105,4 @@ $(document).ready(function() {
 			'easing' : select
 		});
 	}
-
-	$("#btn_start").on("click", function(){
-		go();
-	})
 });

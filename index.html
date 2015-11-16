@@ -12,7 +12,6 @@
 	</head>
 	<body>
 		<div class="title">
-			PICT
 			<font color="red"    >B</font>
 			<font color="skyblue">I</font>
 			<font color="green"  >N</font>
@@ -91,6 +90,25 @@
 			</div>
 			<div id="js-already-num-block"></div>
 		</div>
+		
+		<!-- BGM -->
+		<audio src="audio/Gotcha.mp3"           id="sound_1"></audio>
+		<audio src="audio/PaulOakenfold.mp3"    id="sound_2"></audio>
+		<audio src="audio/RockafellerSkank.mp3" id="sound_3"></audio>
+		<audio src="audio/steveStevens.mp3"     id="sound_4"></audio>
+		<audio src="audio/Lovetrain.mp3"        id="sound_5"></audio>
+		<audio src="audio/ButterflyEffect.mp3"  id="sound_6"></audio>
+		<audio src="audio/RISING.mp3"           id="sound_7"></audio>
+		<audio src="audio/foxCapturePlan.mp3"   id="sound_8"></audio>
+		
+		<script>
+		$(function(){
+			$("[id^=sound_]").on('ended',function(){
+				$(this).next().get(0).play();
+			});
+			$("#sound_1").get(0).play();
+		})
+		</script>
 		
 	</body>
 </html>

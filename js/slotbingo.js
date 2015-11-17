@@ -27,8 +27,20 @@ $(document).ready(function() {
 
 	//既出の数字を表示
 	function displayAlreadyNum(num){
+		
+		if(num <= 15){
+			numberColor = 'number_red';
+		}else if(num <= 30){
+			numberColor = 'number_blue';
+		}else if(num <= 45){
+			numberColor = 'number_green';
+		}else if(num <= 60){
+			numberColor = 'number_yellow';
+		}else{
+			numberColor = 'number_violet';
+		}
 		aleadyNumArr.push(num);
-		$('#js-already-num-block').after("<div class='already_num'>"+num+"</div>");
+		$('#js-already-num-block').after("<div class='already_num " +numberColor+ "'>"+num+"</div>");
 	}
 
 	function onload(init) {

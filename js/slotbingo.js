@@ -27,11 +27,11 @@ $(document).ready(function() {
 			displayAlreadyNum(hitNumberArr[0] * 10 + hitNumberArr[1]);
 
 			tensDigit.children().remove();
-			tensDigit.css({"margin-top" : "-20px"});
+			tensDigit.css({"margin-top" : "0px"});
 			tensDigit.append("<div class='slot'>" + hitNumberArr[0] + "</div>");
 	
 			onesDigit.children().remove();
-			onesDigit.css({"margin-top" : "-20px"});
+			onesDigit.css({"margin-top" : "0px"});
 			onesDigit.append("<div class='slot'>" + hitNumberArr[1] + "</div>");
 	
 			$("#btn_start").removeAttr("disabled");
@@ -54,8 +54,20 @@ $(document).ready(function() {
 
 	//既出の数字を表示
 	function displayAlreadyNum(num){
+		
+		if(num <= 15){
+			numberColor = 'number_red';
+		}else if(num <= 30){
+			numberColor = 'number_blue';
+		}else if(num <= 45){
+			numberColor = 'number_green';
+		}else if(num <= 60){
+			numberColor = 'number_yellow';
+		}else{
+			numberColor = 'number_violet';
+		}
 		aleadyNumArr.push(num);
-		$('#js-already-num-block').after("<div class='already_num'>" + num + "</div>");
+		$('#js-already-num-block').after("<div class='already_num " +numberColor+ "'>"+num+"</div>");
 	}
 
 	function onload(init) {
@@ -89,7 +101,7 @@ $(document).ready(function() {
 		time += Math.round(Math.random() * 1000);
 
 		var marginTop = parseInt(jqo.css("margin-top"), 10)
-		marginTop -= 4800
+		marginTop -= 1200
 
 		jqo.stop(true, true);
 		jqo.animate({

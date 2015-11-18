@@ -7,6 +7,11 @@ $(document).ready(function() {
 	var tensDigit = $("#tens-digit .wrapper");
 	var onesDigit = $("#ones-digit .wrapper");
 
+	// 1~75までの数字を作成し、ランダムに並び替える
+	var numArray = [];
+	for( var i=1; numArray.push(i++) < 75;);
+	numArray = shuffle(numArray);
+
 	// 当たりの数字を格納。Arr[0]が十の位、Arr[1]が1の位
 	var hitNumberArr = [];
 	// 既出の数字を格納
@@ -47,11 +52,6 @@ $(document).ready(function() {
 		hitNumberArr.push(num % 10); // 一の位
 	}
 
-	// 1~75までの数字をランダムで生成
-	function makeRandomNum(){
-		return Math.round(Math.random()*100 % 74) + 1; // 改良
-	}
-
 	//既出の数字を表示
 	function displayAlreadyNum(num){
 		
@@ -71,12 +71,12 @@ $(document).ready(function() {
 	}
 
 	function onload(init) {
-		// 当たりの決定
-		do {
-			var num = makeRandomNum();
-			console.log(num);
-		} while (($.inArray(num, aleadyNumArr) !== -1));
-		setHitNumberArr(num);
+		// // 当たりの決定
+		if (numArray.length == 0){
+			alert("終了です orz");
+			return;
+		}
+		setHitNumberArr(numArray.pop());
 
 		columns = 0;
 		addSlots(tensDigit, init);
@@ -101,7 +101,7 @@ $(document).ready(function() {
 		time += Math.round(Math.random() * 1000);
 
 		var marginTop = parseInt(jqo.css("margin-top"), 10)
-		marginTop -= 1200
+		marginTop -= jqo.parent().height() * 12
 
 		jqo.stop(true, true);
 		jqo.animate({
@@ -110,5 +110,18 @@ $(document).ready(function() {
 			'duration' : time,
 			'easing' : select
 		});
+	}
+
+	function shuffle(array) {
+		var m = array.length, t, i;
+
+		while (m) {
+			i = Math.floor(Math.random() * m--);
+			t = array[m];
+			array[m] = array[i];
+			array[i] = t;
+		}
+
+		return array;
 	}
 });

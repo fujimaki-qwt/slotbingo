@@ -1,10 +1,19 @@
+html, body{
+	height:100%;
+}
 body {
 	background-color: white;
 	padding: 0px;
 	margin: 0px;
 	font-size: 12px;
+	background:url(../image/pict/bingo_bg_stripe.png) repeat;
 }
-
+.inner{
+	background:url(../image/pict/bingo_bg_bottom.png) no-repeat bottom;
+	background-size:contain;
+	width:100%;
+	height:100%;
+}
 #num-display {
 	margin: 0 auto;
 	width: 600px;
@@ -74,16 +83,3 @@ body {
 	text-align  : center;
 }
 
-.logo_left{
-	height: 100px;
-	width : 100px;
-	margin: 20px;
-	float : left;
-}
-
-.logo_right{
-	height: 100px;
-	width : 100px;
-	margin: 20px;
-	float : right;
-}

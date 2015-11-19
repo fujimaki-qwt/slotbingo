@@ -16,10 +16,19 @@ $(document).ready(function() {
 	var hitNumberArr = [];
 	// 既出の数字を格納
 	var aleadyNumArr = [];
+	
+	//音響関係
+	var slotAudio  = new Audio();
+	slotAudio.src  = "audio/slot.mp3";
+	slotAudio.loop = true;
 
+	var numberAudio = new Audio();
+	numberAudio.src = "audio/tetteree.mp3";
+	
 	onload(true);
 
 	$("#btn_start").on("click", function(){
+		slotAudio.play();
 		time = parseInt($("#txt_duration").val()) * 1000; // 数値のみの取得
 		$("#btn_start").attr("disabled", "disabled");
 
@@ -55,6 +64,9 @@ $(document).ready(function() {
 	//既出の数字を表示
 	function displayAlreadyNum(num){
 		
+		slotAudio.pause();
+		numberAudio.play();
+		
 		if(num <= 15){
 			numberColor = 'number_red';
 		}else if(num <= 30){
@@ -62,7 +74,7 @@ $(document).ready(function() {
 		}else if(num <= 45){
 			numberColor = 'number_green';
 		}else if(num <= 60){
-			numberColor = 'number_yellow';
+			numberColor = 'number_orange';
 		}else{
 			numberColor = 'number_violet';
 		}

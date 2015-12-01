@@ -11,97 +11,31 @@
 		
 	</head>
 	<body>
-  <div class="inner">
-		<div class="title">
-			<font color="red"    >B</font>
-			<font color="skyblue">I</font>
-			<font color="green"  >N</font>
-			<font color="orange" >G</font>
-			<font color="violet" >O</font>
-			!!!
-		</div>
-		
-		<!-- 画面上で一時的に消してある...本番でどうするのか？ -->
-		<div style="display:none;">
-			<p align="center">
-				回転スタートから停止までの時間：
-				<input id="txt_duration" type="text" value="1" size="3" maxlength="3" />
-				[秒]
-			</p>
-			<p align="center">
-				アニメーション（回転）方式：
-				<select id="sel_easing" size="1">
-					<option selected>jswing</option>
-					<option>easeInQuad</option>
-					<option>easeOutQuad</option>
-					<option>easeInOutQuad</option>
-					<option>easeInCubic</option>
-					<option>easeOutCubic</option>
-					<option>easeInOutCubic</option>
-					<option>easeInQuart</option>
-					<option>easeOutQuart</option>
-					<option>easeInOutQuart</option>
-					<option>easeInQuint</option>
-					<option>easeOutQuint</option>
-					<option>easeInOutQuint</option>
-					<option>easeInSine</option>
-					<option>easeOutSine</option>
-					<option>easeInOutSine</option>
-					<option>easeInExpo</option>
-					<option>easeOutExpo</option>
-					<option>easeInOutExpo</option>
-					<option>easeInCirc</option>
-					<option>easeOutCirc</option>
-					<option>easeInOutCirc</option>
-					<option>easeInElastic</option>
-					<option>easeOutElastic</option>
-					<option>easeInOutElastic</option>
-					<option>easeInBack</option>
-					<option>easeOutBack</option>
-					<option>easeInOutBack</option>
-					<option>easeInBounce</option>
-					<option>easeOutBounce</option>
-					<option>easeInOutBounce</option>
-				</select>
-			</p>
-		</div>
-		
-		
-		
-		<div id="num-display">
-			<div align="center">
-				<div class="slots" id="tens-digit" style="marigin-right: 5px;">
-					<div class="wrapper"></div>
-				</div>
-				<div class="slots" id="ones-digit">
-					<div class="wrapper"></div>
-				</div>
-				<div>
-					<button class="btn btn-warning btn-big" id="btn_start">Start</button>
+		<div class="inner">
+			<div class="title">
+				<font color="red"    >B</font>
+				<font color="skyblue">I</font>
+				<font color="green"  >N</font>
+				<font color="orange" >G</font>
+				<font color="violet" >O</font>
+				!!!
+			</div>
+
+			<div id="num-display">
+				<div align="center">
+					<div class="slots" id="tens-digit">
+						<div class="wrapper"></div>
+					</div>
+					<div class="slots" id="ones-digit">
+						<div class="wrapper"></div>
+					</div>
+					<div>
+						<button class="btn btn-warning btn-big" id="btn_start">Start</button>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div id="js-already-num-block"></div>
+			<div id="js-already-num-block"></div>
 
-		
-		<!-- BGM -->
-		<!-- <audio src="audio/Gotcha.mp3"           id="sound_1"></audio>
-		<audio src="audio/PaulOakenfold.mp3"    id="sound_2"></audio>
-		<audio src="audio/RockafellerSkank.mp3" id="sound_3"></audio>
-		<audio src="audio/steveStevens.mp3"     id="sound_4"></audio>
-		<audio src="audio/Lovetrain.mp3"        id="sound_5"></audio>
-		<audio src="audio/ButterflyEffect.mp3"  id="sound_6"></audio>
-		<audio src="audio/RISING.mp3"           id="sound_7"></audio>
-		<audio src="audio/foxCapturePlan.mp3"   id="sound_8"></audio> -->
-		
-		<!-- <script>
-		$(function(){
-			$("[id^=sound_]").on('ended',function(){
-				$(this).next().get(0).play();
-			});
-			$("#sound_1").get(0).play();
-		})
-		</script> -->
-	  </div>	
+		</div>	
 	</body>
 </html>
